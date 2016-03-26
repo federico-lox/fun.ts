@@ -4,7 +4,6 @@ logs
 npm-debug.log*
 
 # npm and node
-node_modules
 .npm
 .node_repl_history
 .lock-wscript
