@@ -1,0 +1,16 @@
+{
+  "name": "fun.ts",
+  "version": "0.0.1",
+  "description": "An attempt to an approchable, practical functional standard library for Typescript.",
+  "author": "Federico \"Lox\" Lucignano",
+  "license": "MIT",
+  "main": "index.js",
+  "devDependencies": {
+      "source-map-support": "0.4.0"
+  },
+  "scripts": {
+    "clean": "rm -Rf build",
+    "release": "tsc -p tsconfig-release.json",
+    "test": "tsc && node build/test-runner.js"
+  }
+}

@@ -1,0 +1,17 @@
+{
+    "compilerOptions": {
+        "noEmitOnError": true,
+        "outDir": "build/",
+        "outFile": "build/fun.ts.js",
+        "pretty": true,
+        "removeComments": true,
+        "sourceMap": false,
+        "target": "es5"
+    },
+    "exclude": [
+        "build",
+        "node_modules",
+        "*.js",
+        "tst"
+    ]
+}

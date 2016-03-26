@@ -1,0 +1,17 @@
+{
+    "compilerOptions": {
+        "noEmitOnError": true,
+        "outDir": "build/",
+        "outFile": "build/test-runner.js",
+        "pretty": true,
+        "removeComments": false,
+        "sourceMap": true,
+        "target": "es5"
+    },
+    "exclude": [
+        "build",
+        "node_modules",
+        "*.js",
+        "src/main.ts"
+    ]
+}
