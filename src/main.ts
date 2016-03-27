@@ -1,5 +1,8 @@
 /// <reference path="func.ts" />
 
-if (module && module.exports && typeof require == 'function') {
+declare var module;
+declare var require;
+
+if (module && module.exports && typeof require === 'function') {
     module.exports = fun;
 }

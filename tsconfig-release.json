@@ -12,6 +12,7 @@
         "build",
         "node_modules",
         "*.js",
-        "tst"
+        "tst",
+        "typings/node.d.ts"
     ]
 }
