@@ -9,8 +9,9 @@
       "source-map-support": "0.4.0"
   },
   "scripts": {
-    "clean": "rm -Rf build",
-    "release": "tsc -p tsconfig-release.json",
-    "test": "tsc && node build/test-runner.js"
+    "clean": "echo '=> Cleaning up...' && rm -Rf build && echo '\\tSUCCEEDED'",
+    "compile": "echo '=> Building...' && tsc -p tsconfig-release.json && echo '\\tSUCCEEDED'",
+    "test": "echo '=> Running tests...' && tsc && node build/test-runner.js && echo '\\tSUCCEEDED'",
+    "build": "echo BUILD STARTED at `date` && npm test && npm run clean && npm run compile && echo COMPLETED at `date`"
   }
 }

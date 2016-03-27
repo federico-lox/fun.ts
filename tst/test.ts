@@ -3,11 +3,14 @@
 namespace test {
     require('source-map-support/register');
 
-    process.stdout.write('Running tests: ');
     const startTime = Date.now();
 
     process.on('exit', (code: number) => {
-        process.stdout.write(`${code != 0 ? '\x1b[31mFAILED\x1b[0m' : '\x1b[32mSUCCEEDED\x1b[0m'} in ${Date.now() - startTime}ms\n`);
+        if (code != 0) {
+            process.stdout.write("\t\x1b[31mFAILED\x1b[0m\n");
+        } else {
+            process.stdout.write(`\tCompleted in ${Date.now() - startTime} ms\n`);
+        }
     });
 
     export const assert: {
