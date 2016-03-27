@@ -34,4 +34,23 @@ namespace test.base {
         assert.strictEqual(1, ret1(null));
         assert.strictEqual(1, ret1(2));
     }
+
+    namespace parameter {
+        const
+            params = [1, "a", { a: 1 }],
+            param = { a: 1, b: '2', c: [3] };
+
+        assert.strictEqual(1, f.parameter(0).apply(null, params));
+        assert.strictEqual('a', f.parameter(1).apply(null, params));
+        assert.deepStrictEqual({ a: 1 }, f.parameter(2).apply(null, params));
+        assert.strictEqual(undefined, f.parameter(3).apply(null, params));
+
+        assert.strictEqual(1, f.parameter('a').call(null, param));
+        assert.strictEqual('2', f.parameter('b').call(null, param));
+        assert.deepStrictEqual([3], f.parameter('c').call(null, param));
+        assert.strictEqual(undefined, f.parameter('d').apply(null, params));
+
+        assert.strictEqual(undefined, f.parameter(0).call(null));
+        assert.strictEqual(undefined, f.parameter('a').call(null));
+    }
 }
