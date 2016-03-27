@@ -1,7 +1,7 @@
 /// <reference path="test.ts" />
-/// <reference path="../src/base.ts" />
+/// <reference path="../src/func.ts" />
 
-namespace test.base {
+namespace test.func {
     import f = fun;
 
     namespace identity {
