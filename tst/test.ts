@@ -1,7 +1,10 @@
 /// <reference path="../typings/node.d.ts" />
 
 namespace test {
-    require('source-map-support/register');
+    // Just move along if source-map-support is not available
+    try {
+        require('source-map-support/register');
+    } catch (e) { }
 
     const startTime = Date.now();
 
