@@ -20,7 +20,8 @@ namespace fun {
     }
 
     export function isArray<T>(value: any): value is Array<T> {
-        return Array.isArray(value);
+        // See http://jsperf.com/is-array-tests
+        return value != undefined && value.constructor === Array;
     }
 
     export function isFunction(value: any): value is Function {

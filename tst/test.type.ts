@@ -111,12 +111,25 @@ namespace test.type {
 
         assert.strictEqual(true, f.isArray([]));
         assert.strictEqual(true, f.isArray([1]));
-        assert.strictEqual(true, f.isArray(new Array()));
+        assert.strictEqual(true, f.isArray(new Array(3)));
 
         assert.strictEqual(false, f.isArray({}));
         assert.strictEqual(false, f.isArray({ a: 1 }));
 
         assert.strictEqual(false, f.isArray(() => { }));
+        assert.strictEqual(false, f.isArray(f.isFunction));
+        assert.strictEqual(false, f.isArray(Function.apply));
+
+        const Dummy = function(value) {
+            this.a = value;
+        };
+
+        assert.strictEqual(false, f.isArray(Date));
+        assert.strictEqual(false, f.isArray(new Date()));
+        assert.strictEqual(false, f.isArray(RegExp));
+        assert.strictEqual(false, f.isArray(new RegExp('a')));
+        assert.strictEqual(false, f.isArray(Dummy));
+        assert.strictEqual(false, f.isArray(new Dummy(1)));
     }
 
     namespace isFunction {
