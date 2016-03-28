@@ -4,6 +4,12 @@
 namespace test.func {
     import f = fun;
 
+    namespace noop {
+        assert.strictEqual(undefined, f.noop());
+        assert.strictEqual(undefined, f.noop(1));
+        assert.strictEqual(undefined, f.noop(1, 2, 3));
+    }
+
     namespace identity {
         assert.strictEqual(undefined, f.identity(undefined));
         assert.notStrictEqual(null, f.identity(undefined));

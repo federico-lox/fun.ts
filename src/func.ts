@@ -1,5 +1,10 @@
 namespace fun {
     /**
+     * An empty function, returns undefined
+     */
+    export function noop(...params: any[]): void {}
+
+    /**
      * Returns the value passed in as is.
      */
     export function identity<T>(value: T): T {
