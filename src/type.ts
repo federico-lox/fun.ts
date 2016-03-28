@@ -22,4 +22,9 @@ namespace fun {
     export function isArray<T>(value: any): value is Array<T> {
         return Array.isArray(value);
     }
+
+    export function isFunction(value: any): value is Function {
+        // Avoid typeof bugs (e.g. some versions of IE 11, PhantomJS)
+        return typeof value === 'function' && typeof value.call === 'function' && typeof value.apply === 'function';
+    }
 }
