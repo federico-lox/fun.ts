@@ -60,4 +60,26 @@ namespace test.type {
 
         assert.strictEqual(false, f.isNumber(() => { }));
     }
+
+    namespace isNumber {
+        assert.strictEqual(false, f.isBoolean(null));
+        assert.strictEqual(false, f.isBoolean(undefined));
+
+        assert.strictEqual(false, f.isBoolean(0));
+        assert.strictEqual(false, f.isBoolean(1));
+
+        assert.strictEqual(false, f.isBoolean(''));
+        assert.strictEqual(false, f.isBoolean('a'));
+
+        assert.strictEqual(true, f.isBoolean(false));
+        assert.strictEqual(true, f.isBoolean(true));
+
+        assert.strictEqual(false, f.isBoolean([]));
+        assert.strictEqual(false, f.isBoolean([1]));
+
+        assert.strictEqual(false, f.isBoolean({}));
+        assert.strictEqual(false, f.isBoolean({ a: 1 }));
+
+        assert.strictEqual(false, f.isBoolean(() => { }));
+    }
 }

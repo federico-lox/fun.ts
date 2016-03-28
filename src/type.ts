@@ -14,4 +14,8 @@ namespace fun {
     export function isNumber(value: any): value is number {
         return typeof value === 'number';
     }
+
+    export function isBoolean(value: any): value is boolean {
+        return typeof value === 'boolean';
+    }
 }
