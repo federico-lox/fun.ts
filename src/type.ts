@@ -33,6 +33,7 @@ namespace fun {
      */
     export function isObject(value: any): value is Object {
         // See http://jsperf.com/is-object-tests
+        // See https://basarat.gitbooks.io/typescript/content/docs/tips/null.html
         return value != undefined && value.constructor === Object;
     }
 }
