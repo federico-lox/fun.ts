@@ -6,4 +6,8 @@ namespace fun {
         // See https://basarat.gitbooks.io/typescript/content/docs/tips/null.html
         return value == undefined;
     }
+
+    export function isString(value: any): value is string {
+        return typeof value === 'string';
+    }    
 }

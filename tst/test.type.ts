@@ -22,4 +22,23 @@ namespace test.type {
 
         assert.strictEqual(false, f.isNil(() => { }));
     }
+
+    namespace isString {
+        assert.strictEqual(false, f.isString(null));
+        assert.strictEqual(false, f.isString(undefined));
+
+        assert.strictEqual(false, f.isString(0));
+        assert.strictEqual(false, f.isString(1));
+
+        assert.strictEqual(true, f.isString(''));
+        assert.strictEqual(true, f.isString('a'));
+
+        assert.strictEqual(false, f.isString([]));
+        assert.strictEqual(false, f.isString([1]));
+
+        assert.strictEqual(false, f.isString({}));
+        assert.strictEqual(false, f.isString({ a: 1 }));
+
+        assert.strictEqual(false, f.isString(() => { }));
+    }    
 }
