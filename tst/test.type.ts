@@ -146,6 +146,10 @@ namespace test.type {
             this.a = value;
         };
 
+        assert.strictEqual(true, f.isFunction(Date));
+        assert.strictEqual(false, f.isFunction(new Date()));
+        assert.strictEqual(true, f.isFunction(RegExp));
+        assert.strictEqual(false, f.isFunction(new RegExp('a')));
         assert.strictEqual(true, f.isFunction(Dummy));
         assert.strictEqual(false, f.isFunction(new Dummy(1)));
     }

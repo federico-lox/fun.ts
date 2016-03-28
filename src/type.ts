@@ -24,8 +24,8 @@ namespace fun {
     }
 
     export function isFunction(value: any): value is Function {
-        // Avoid typeof bugs (e.g. some versions of IE 11, PhantomJS)
-        return typeof value === 'function' && typeof value.call === 'function' && typeof value.apply === 'function';
+        // See http://jsperf.com/is-function-tests
+        return value != undefined && value.constructor === Function;
     }
 
     /**
