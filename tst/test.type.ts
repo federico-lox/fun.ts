@@ -147,6 +147,7 @@ namespace test.type {
 
         assert.strictEqual(false, f.isFunction([]));
         assert.strictEqual(false, f.isFunction([1]));
+        assert.strictEqual(false, f.isFunction(new Array(3)));
 
         assert.strictEqual(false, f.isFunction({}));
         assert.strictEqual(false, f.isFunction({ a: 1 }));
@@ -182,6 +183,7 @@ namespace test.type {
 
         assert.strictEqual(false, f.isObject([]));
         assert.strictEqual(false, f.isObject([1]));
+        assert.strictEqual(false, f.isObject(new Array(3)));
 
         assert.strictEqual(false, f.isObject(() => { }));
         assert.strictEqual(false, f.isObject(f.isFunction));
