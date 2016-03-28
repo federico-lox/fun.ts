@@ -1,3 +1,4 @@
+/// <reference path="type.ts" />
 /// <reference path="func.ts" />
 
 declare var module;
