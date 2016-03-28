@@ -59,5 +59,5 @@ namespace test.type {
         assert.strictEqual(false, f.isNumber({ a: 1 }));
 
         assert.strictEqual(false, f.isNumber(() => { }));
-    }    
+    }
 }
