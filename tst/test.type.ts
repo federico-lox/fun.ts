@@ -4,7 +4,7 @@
 namespace test.type {
     import f = fun;
 
-    namespace isNil {
+    namespace isVoid {
         assert.strictEqual(true, f.isVoid(null));
         assert.strictEqual(true, f.isVoid(undefined));
 
@@ -182,8 +182,11 @@ namespace test.type {
             this.a = value;
         };
 
-        assert.strictEqual(false, f.isObject(new Dummy(1)));
+        assert.strictEqual(false, f.isObject(Date));
         assert.strictEqual(false, f.isObject(new Date()));
+        assert.strictEqual(false, f.isObject(RegExp));
         assert.strictEqual(false, f.isObject(new RegExp('a')));
+        assert.strictEqual(false, f.isObject(Dummy));
+        assert.strictEqual(false, f.isObject(new Dummy(1)));
     }
 }
