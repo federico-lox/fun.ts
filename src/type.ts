@@ -8,6 +8,7 @@ namespace fun {
     }
 
     export function isString(value: any): value is string {
+        // See http://jsperf.com/is-string-tests
         return typeof value === 'string';
     }
 
