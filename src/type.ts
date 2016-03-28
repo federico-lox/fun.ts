@@ -18,4 +18,8 @@ namespace fun {
     export function isBoolean(value: any): value is boolean {
         return typeof value === 'boolean';
     }
+
+    export function isArray<T>(value: any): value is Array<T> {
+        return Array.isArray(value);
+    }
 }

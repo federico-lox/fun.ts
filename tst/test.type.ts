@@ -95,4 +95,27 @@ namespace test.type {
 
         assert.strictEqual(false, f.isBoolean(() => { }));
     }
+
+    namespace isArray {
+        assert.strictEqual(false, f.isArray(null));
+        assert.strictEqual(false, f.isArray(undefined));
+
+        assert.strictEqual(false, f.isArray(0));
+        assert.strictEqual(false, f.isArray(1));
+
+        assert.strictEqual(false, f.isArray(''));
+        assert.strictEqual(false, f.isArray('a'));
+
+        assert.strictEqual(false, f.isArray(false));
+        assert.strictEqual(false, f.isArray(true));
+
+        assert.strictEqual(true, f.isArray([]));
+        assert.strictEqual(true, f.isArray([1]));
+        assert.strictEqual(true, f.isArray(new Array()));
+
+        assert.strictEqual(false, f.isArray({}));
+        assert.strictEqual(false, f.isArray({ a: 1 }));
+
+        assert.strictEqual(false, f.isArray(() => { }));
+    }
 }
