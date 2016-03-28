@@ -27,4 +27,12 @@ namespace fun {
         // Avoid typeof bugs (e.g. some versions of IE 11, PhantomJS)
         return typeof value === 'function' && typeof value.call === 'function' && typeof value.apply === 'function';
     }
+
+    /**
+     * Returns true if value is a plain object (e.g. {a: 1}), false otherwise.
+     */
+    export function isObject(value: any): value is Object {
+        // See http://jsperf.com/is-object-tests
+        return value != undefined && value.constructor === Object;
+    }
 }

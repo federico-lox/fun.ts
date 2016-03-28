@@ -149,4 +149,37 @@ namespace test.type {
         assert.strictEqual(true, f.isFunction(Dummy));
         assert.strictEqual(false, f.isFunction(new Dummy(1)));
     }
+
+    namespace isObject {
+        assert.strictEqual(false, f.isObject(null));
+        assert.strictEqual(false, f.isObject(undefined));
+
+        assert.strictEqual(false, f.isObject(0));
+        assert.strictEqual(false, f.isObject(1));
+
+        assert.strictEqual(false, f.isObject(''));
+        assert.strictEqual(false, f.isObject('a'));
+
+        assert.strictEqual(false, f.isObject(false));
+        assert.strictEqual(false, f.isObject(true));
+
+        assert.strictEqual(false, f.isObject([]));
+        assert.strictEqual(false, f.isObject([1]));
+
+        assert.strictEqual(false, f.isObject(() => { }));
+        assert.strictEqual(false, f.isObject(f.isFunction));
+        assert.strictEqual(false, f.isObject(Function.apply));
+
+        assert.strictEqual(true, f.isObject({}));
+        assert.strictEqual(true, f.isObject({ a: 1 }));
+        assert.strictEqual(true, f.isObject(Object.create({})));
+
+        const Dummy = function(value) {
+            this.a = value;
+        };
+
+        assert.strictEqual(false, f.isObject(new Dummy(1)));
+        assert.strictEqual(false, f.isObject(new Date()));
+        assert.strictEqual(false, f.isObject(new RegExp('a')));
+    }
 }
