@@ -14,6 +14,9 @@ namespace test.type {
         assert.strictEqual(false, f.isNil(''));
         assert.strictEqual(false, f.isNil('a'));
 
+        assert.strictEqual(false, f.isNil(false));
+        assert.strictEqual(false, f.isNil(true));
+
         assert.strictEqual(false, f.isNil([]));
         assert.strictEqual(false, f.isNil([1]));
 
@@ -33,6 +36,9 @@ namespace test.type {
         assert.strictEqual(true, f.isString(''));
         assert.strictEqual(true, f.isString('a'));
 
+        assert.strictEqual(false, f.isString(false));
+        assert.strictEqual(false, f.isString(true));
+
         assert.strictEqual(false, f.isString([]));
         assert.strictEqual(false, f.isString([1]));
 
@@ -51,6 +57,9 @@ namespace test.type {
 
         assert.strictEqual(false, f.isNumber(''));
         assert.strictEqual(false, f.isNumber('a'));
+
+        assert.strictEqual(false, f.isNumber(false));
+        assert.strictEqual(false, f.isNumber(true));
 
         assert.strictEqual(false, f.isNumber([]));
         assert.strictEqual(false, f.isNumber([1]));
