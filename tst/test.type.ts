@@ -54,6 +54,10 @@ namespace test.type {
 
         assert.strictEqual(true, f.isNumber(0));
         assert.strictEqual(true, f.isNumber(1));
+        assert.strictEqual(true, f.isNumber(-11));
+
+        assert.strictEqual(true, f.isNumber(0.0));
+        assert.strictEqual(true, f.isNumber(1.0));
 
         assert.strictEqual(false, f.isNumber(''));
         assert.strictEqual(false, f.isNumber('a'));
