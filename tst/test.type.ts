@@ -41,4 +41,23 @@ namespace test.type {
 
         assert.strictEqual(false, f.isString(() => { }));
     }
+
+    namespace isNumber {
+        assert.strictEqual(false, f.isNumber(null));
+        assert.strictEqual(false, f.isNumber(undefined));
+
+        assert.strictEqual(true, f.isNumber(0));
+        assert.strictEqual(true, f.isNumber(1));
+
+        assert.strictEqual(false, f.isNumber(''));
+        assert.strictEqual(false, f.isNumber('a'));
+
+        assert.strictEqual(false, f.isNumber([]));
+        assert.strictEqual(false, f.isNumber([1]));
+
+        assert.strictEqual(false, f.isNumber({}));
+        assert.strictEqual(false, f.isNumber({ a: 1 }));
+
+        assert.strictEqual(false, f.isNumber(() => { }));
+    }    
 }
