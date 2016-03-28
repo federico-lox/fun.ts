@@ -5,25 +5,25 @@ namespace test.type {
     import f = fun;
 
     namespace isNil {
-        assert.strictEqual(true, f.isNil(null));
-        assert.strictEqual(true, f.isNil(undefined));
+        assert.strictEqual(true, f.isVoid(null));
+        assert.strictEqual(true, f.isVoid(undefined));
 
-        assert.strictEqual(false, f.isNil(0));
-        assert.strictEqual(false, f.isNil(1));
+        assert.strictEqual(false, f.isVoid(0));
+        assert.strictEqual(false, f.isVoid(1));
 
-        assert.strictEqual(false, f.isNil(''));
-        assert.strictEqual(false, f.isNil('a'));
+        assert.strictEqual(false, f.isVoid(''));
+        assert.strictEqual(false, f.isVoid('a'));
 
-        assert.strictEqual(false, f.isNil(false));
-        assert.strictEqual(false, f.isNil(true));
+        assert.strictEqual(false, f.isVoid(false));
+        assert.strictEqual(false, f.isVoid(true));
 
-        assert.strictEqual(false, f.isNil([]));
-        assert.strictEqual(false, f.isNil([1]));
+        assert.strictEqual(false, f.isVoid([]));
+        assert.strictEqual(false, f.isVoid([1]));
 
-        assert.strictEqual(false, f.isNil({}));
-        assert.strictEqual(false, f.isNil({ a: 1 }));
+        assert.strictEqual(false, f.isVoid({}));
+        assert.strictEqual(false, f.isVoid({ a: 1 }));
 
-        assert.strictEqual(false, f.isNil(() => { }));
+        assert.strictEqual(false, f.isVoid(() => { }));
     }
 
     namespace isString {
