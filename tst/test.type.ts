@@ -74,7 +74,7 @@ namespace test.type {
         assert.strictEqual(false, f.isNumber(() => { }));
     }
 
-    namespace isNumber {
+    namespace isBoolean {
         assert.strictEqual(false, f.isBoolean(null));
         assert.strictEqual(false, f.isBoolean(undefined));
 
