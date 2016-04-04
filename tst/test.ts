@@ -1,4 +1,5 @@
 /// <reference path="../typings/node.d.ts" />
+/// <reference path="fixtures.ts" />
 
 namespace test {
     // Just move along if source-map-support is not available
