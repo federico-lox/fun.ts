@@ -2013,6 +2013,7 @@ declare module "assert" {
     function internal (value: any, message?: string): void;
     namespace internal {
         export class AssertionError implements Error {
+            __sequencer__(): any;
             name: string;
             message: string;
             actual: any;
