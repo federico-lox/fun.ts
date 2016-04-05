@@ -34,7 +34,7 @@ namespace test.type {
 
         assert.strictEqual(f.isVoid(fixtures.rootObject()), false);
         assert.strictEqual(f.isVoid(new fixtures.SimpleObject()), false);
-        assert.strictEqual(f.isVoid(new fixtures.SequenceObject()), false);
+        assert.strictEqual(f.isVoid(new fixtures.Sequence()), false);
     }
 
     namespace isString {
@@ -67,7 +67,7 @@ namespace test.type {
 
         assert.strictEqual(f.isString(fixtures.rootObject()), false);
         assert.strictEqual(f.isString(new fixtures.SimpleObject()), false);
-        assert.strictEqual(f.isString(new fixtures.SequenceObject()), false);
+        assert.strictEqual(f.isString(new fixtures.Sequence()), false);
     }
 
     namespace isNumber {
@@ -100,7 +100,7 @@ namespace test.type {
 
         assert.strictEqual(f.isNumber(fixtures.rootObject()), false);
         assert.strictEqual(f.isNumber(new fixtures.SimpleObject()), false);
-        assert.strictEqual(f.isNumber(new fixtures.SequenceObject()), false);
+        assert.strictEqual(f.isNumber(new fixtures.Sequence()), false);
     }
 
     namespace isBoolean {
@@ -133,7 +133,7 @@ namespace test.type {
 
         assert.strictEqual(f.isBoolean(fixtures.rootObject()), false);
         assert.strictEqual(f.isBoolean(new fixtures.SimpleObject()), false);
-        assert.strictEqual(f.isBoolean(new fixtures.SequenceObject()), false);
+        assert.strictEqual(f.isBoolean(new fixtures.Sequence()), false);
     }
 
     namespace isArray {
@@ -166,7 +166,7 @@ namespace test.type {
 
         assert.strictEqual(f.isArray(fixtures.rootObject()), false);
         assert.strictEqual(f.isArray(new fixtures.SimpleObject()), false);
-        assert.strictEqual(f.isArray(new fixtures.SequenceObject()), false);
+        assert.strictEqual(f.isArray(new fixtures.Sequence()), false);
     }
 
     namespace isFunction {
@@ -199,7 +199,7 @@ namespace test.type {
 
         assert.strictEqual(f.isFunction(fixtures.rootObject()), false);
         assert.strictEqual(f.isFunction(new fixtures.SimpleObject()), false);
-        assert.strictEqual(f.isFunction(new fixtures.SequenceObject()), false);
+        assert.strictEqual(f.isFunction(new fixtures.Sequence()), false);
     }
 
     namespace isObject {
@@ -232,7 +232,7 @@ namespace test.type {
 
         assert.strictEqual(f.isObject(fixtures.rootObject()), false);
         assert.strictEqual(f.isObject(new fixtures.SimpleObject()), false);
-        assert.strictEqual(f.isObject(new fixtures.SequenceObject()), false);
+        assert.strictEqual(f.isObject(new fixtures.Sequence()), false);
     }
 
     namespace isDate {
@@ -265,7 +265,7 @@ namespace test.type {
 
         assert.strictEqual(f.isDate(fixtures.rootObject()), false);
         assert.strictEqual(f.isDate(new fixtures.SimpleObject()), false);
-        assert.strictEqual(f.isDate(new fixtures.SequenceObject()), false);
+        assert.strictEqual(f.isDate(new fixtures.Sequence()), false);
     }
 
     namespace isRegExp {
@@ -298,7 +298,7 @@ namespace test.type {
 
         assert.strictEqual(f.isRegExp(fixtures.rootObject()), false);
         assert.strictEqual(f.isRegExp(new fixtures.SimpleObject()), false);
-        assert.strictEqual(f.isRegExp(new fixtures.SequenceObject()), false);
+        assert.strictEqual(f.isRegExp(new fixtures.Sequence()), false);
     }
 
     namespace isError {
@@ -332,6 +332,6 @@ namespace test.type {
 
         assert.strictEqual(f.isError(fixtures.rootObject()), false);
         assert.strictEqual(f.isError(new fixtures.SimpleObject()), false);
-        assert.strictEqual(f.isError(new fixtures.SequenceObject()), false);
+        assert.strictEqual(f.isError(new fixtures.Sequence()), false);
     }
 }
