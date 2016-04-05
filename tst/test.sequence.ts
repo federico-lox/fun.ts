@@ -5,9 +5,13 @@ namespace test.iterator {
     import f = fun;
 
     namespace isSequence {
+        assert.strictEqual(f.isSequence(undefined), false);
+        assert.strictEqual(f.isSequence(null), false);
+
         assert.strictEqual(f.isSequence(1), true);
         assert.strictEqual(f.isSequence(0), true);
         assert.strictEqual(f.isSequence(-1), true);
+        assert.strictEqual(f.isSequence(0.1), true);
 
         assert.strictEqual(f.isSequence(true), true);
         assert.strictEqual(f.isSequence(false), true);
