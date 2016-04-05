@@ -83,7 +83,6 @@ namespace fun {
     }
 
     function propertiesSequencer<T>(): Sequencer<[string, T]> {
-        // TODO: use string indexed interface instead of Object
         const keys = Object.keys(this);
         let index = 0;
         return {
