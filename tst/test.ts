@@ -18,16 +18,16 @@ namespace test {
     });
 
     export const assert: {
-        fail(actual?: any, expected?: any, message?: string, operator?: string): void;
-        ok(value: any, message?: string): void;
-        equal(actual: any, expected: any, message?: string): void;
-        notEqual(actual: any, expected: any, message?: string): void;
-        deepEqual(actual: any, expected: any, message?: string): void;
-        notDeepEqual(acutal: any, expected: any, message?: string): void;
-        strictEqual(actual: any, expected: any, message?: string): void;
-        notStrictEqual(actual: any, expected: any, message?: string): void;
-        deepStrictEqual(actual: any, expected: any, message?: string): void;
-        notDeepStrictEqual(actual: any, expected: any, message?: string): void;
+        fail<T>(actual?: T, expected?: T, message?: string, operator?: string): void;
+        ok<T>(value: T, message?: string): void;
+        equal<T>(actual: T, expected: T, message?: string): void;
+        notEqual<T>(actual: T, expected: T, message?: string): void;
+        deepEqual<T>(actual: T, expected: T, message?: string): void;
+        notDeepEqual<T>(acutal: T, expected: T, message?: string): void;
+        strictEqual<T>(actual: T, expected: T, message?: string): void;
+        notStrictEqual<T>(actual: T, expected: T, message?: string): void;
+        deepStrictEqual<T>(actual: T, expected: T, message?: string): void;
+        notDeepStrictEqual<T>(actual: T, expected: T, message?: string): void;
         throws: {
             (block: Function, message?: string): void;
             (block: Function, error: Function, message?: string): void;
@@ -40,6 +40,6 @@ namespace test {
             (block: Function, error: RegExp, message?: string): void;
             (block: Function, error: (err: any) => boolean, message?: string): void;
         }
-        ifError(value: any): void;
+        ifError<T>(value: T): void;
     } = require('assert');
 }
