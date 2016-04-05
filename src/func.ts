@@ -32,7 +32,7 @@ namespace fun {
      */
     export function parameter<T>(property: string): (param: Object, ...rest: any[]) => T
     export function parameter<T>(position: number): (...params: any[]) => T
-    export function parameter<T>(p: string | number): ((param: Object, ...rest: any[]) => T) | ((...params: any[]) => T) {
+    export function parameter<T>(p: string | number): ((param: Object, ...rest: any[]) => T | void) | ((...params: any[]) => T | void) {
         if (typeof p === 'number') {
             return (...params: any[]) => params[p];
         } else if (typeof p === 'string') {

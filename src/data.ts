@@ -18,7 +18,7 @@ namespace fun {
         return { found: false, value: otherwise };
     }
 
-    export function putAt<I, T>(index: I, value: T, data: IndexMutableSequence<I, T>): MutatorResult<T> {
+    export function putAt<I, T>(index: I, value: T, data: IndexMutableSequence<I, T>): MutatorResult<T | void> {
         if (!isVoid(index) && !isVoid(data) && isIndexMutableSequence<I, T>(data)) {
             return data.__indexMutator__(index, value);
         } else {
