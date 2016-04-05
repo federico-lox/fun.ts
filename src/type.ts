@@ -38,4 +38,18 @@ namespace fun {
         // See https://basarat.gitbooks.io/typescript/content/docs/tips/null.html
         return value != undefined && value.constructor === Object;
     }
+
+    export function isDate(value: any): value is Date {
+        // See http://jsperf.com/is-date-test
+        return value != undefined && value.constructor === Date;
+    }
+
+    export function isRegExp(value: any): value is RegExp {
+        return value != undefined && value.constructor === RegExp;
+    }
+
+    export function isError(value: any): value is Error {
+        // Use instanceof here to handle the various specializations of Error.
+        return value instanceof Error;
+    }
 }

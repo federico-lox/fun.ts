@@ -5,203 +5,333 @@ namespace test.type {
     import f = fun;
 
     namespace isVoid {
-        assert.strictEqual(true, f.isVoid(null));
-        assert.strictEqual(true, f.isVoid(undefined));
+        assert.strictEqual(f.isVoid(null), true);
+        assert.strictEqual(f.isVoid(undefined), true);
 
-        assert.strictEqual(false, f.isVoid(0));
-        assert.strictEqual(false, f.isVoid(1));
+        assert.strictEqual(f.isVoid(1), false);
+        assert.strictEqual(f.isVoid(0), false);
+        assert.strictEqual(f.isVoid(-1), false);
+        assert.strictEqual(f.isVoid(0.1), false);
 
-        assert.strictEqual(false, f.isVoid(''));
-        assert.strictEqual(false, f.isVoid('a'));
+        assert.strictEqual(f.isVoid(true), false);
+        assert.strictEqual(f.isVoid(false), false);
 
-        assert.strictEqual(false, f.isVoid(false));
-        assert.strictEqual(false, f.isVoid(true));
+        assert.strictEqual(f.isVoid('abc'), false);
+        assert.strictEqual(f.isVoid(''), false);
 
-        assert.strictEqual(false, f.isVoid([]));
-        assert.strictEqual(false, f.isVoid([1]));
+        assert.strictEqual(f.isVoid([1, 2, 3]), false);
+        assert.strictEqual(f.isVoid([]), false);
 
-        assert.strictEqual(false, f.isVoid({}));
-        assert.strictEqual(false, f.isVoid({ a: 1 }));
+        assert.strictEqual(f.isVoid({ a: 1, b: 2, c: 3 }), false);
+        assert.strictEqual(f.isVoid({}), false);
 
-        assert.strictEqual(false, f.isVoid(() => { }));
+        assert.strictEqual(f.isVoid(() => 1), false);
+        assert.strictEqual(f.isVoid(() => { }), false);
+
+        assert.strictEqual(f.isVoid(new Date()), false);
+        assert.strictEqual(f.isVoid(new RegExp('.*')), false);
+        assert.strictEqual(f.isVoid(new Error('test')), false);
+
+        assert.strictEqual(f.isVoid(fixtures.rootObject()), false);
+        assert.strictEqual(f.isVoid(new fixtures.SimpleObject()), false);
+        assert.strictEqual(f.isVoid(new fixtures.SequenceObject()), false);
     }
 
     namespace isString {
-        assert.strictEqual(false, f.isString(null));
-        assert.strictEqual(false, f.isString(undefined));
+        assert.strictEqual(f.isString(null), false);
+        assert.strictEqual(f.isString(undefined), false);
 
-        assert.strictEqual(false, f.isString(0));
-        assert.strictEqual(false, f.isString(1));
+        assert.strictEqual(f.isString(1), false);
+        assert.strictEqual(f.isString(0), false);
+        assert.strictEqual(f.isString(-1), false);
+        assert.strictEqual(f.isString(0.1), false);
 
-        assert.strictEqual(true, f.isString(''));
-        assert.strictEqual(true, f.isString('a'));
+        assert.strictEqual(f.isString(true), false);
+        assert.strictEqual(f.isString(false), false);
 
-        assert.strictEqual(false, f.isString(false));
-        assert.strictEqual(false, f.isString(true));
+        assert.strictEqual(f.isString('abc'), true);
+        assert.strictEqual(f.isString(''), true);
 
-        assert.strictEqual(false, f.isString([]));
-        assert.strictEqual(false, f.isString([1]));
+        assert.strictEqual(f.isString([1, 2, 3]), false);
+        assert.strictEqual(f.isString([]), false);
 
-        assert.strictEqual(false, f.isString({}));
-        assert.strictEqual(false, f.isString({ a: 1 }));
+        assert.strictEqual(f.isString({ a: 1, b: 2, c: 3 }), false);
+        assert.strictEqual(f.isString({}), false);
 
-        assert.strictEqual(false, f.isString(() => { }));
+        assert.strictEqual(f.isString(() => 1), false);
+        assert.strictEqual(f.isString(() => { }), false);
+
+        assert.strictEqual(f.isString(new Date()), false);
+        assert.strictEqual(f.isString(new RegExp('.*')), false);
+        assert.strictEqual(f.isString(new Error('test')), false);
+
+        assert.strictEqual(f.isString(fixtures.rootObject()), false);
+        assert.strictEqual(f.isString(new fixtures.SimpleObject()), false);
+        assert.strictEqual(f.isString(new fixtures.SequenceObject()), false);
     }
 
     namespace isNumber {
-        assert.strictEqual(false, f.isNumber(null));
-        assert.strictEqual(false, f.isNumber(undefined));
+        assert.strictEqual(f.isNumber(null), false);
+        assert.strictEqual(f.isNumber(undefined), false);
 
-        assert.strictEqual(true, f.isNumber(0));
-        assert.strictEqual(true, f.isNumber(1));
-        assert.strictEqual(true, f.isNumber(-11));
+        assert.strictEqual(f.isNumber(1), true);
+        assert.strictEqual(f.isNumber(0), true);
+        assert.strictEqual(f.isNumber(-1), true);
+        assert.strictEqual(f.isNumber(0.1), true);
 
-        assert.strictEqual(true, f.isNumber(0.0));
-        assert.strictEqual(true, f.isNumber(1.0));
+        assert.strictEqual(f.isNumber(true), false);
+        assert.strictEqual(f.isNumber(false), false);
 
-        assert.strictEqual(false, f.isNumber(''));
-        assert.strictEqual(false, f.isNumber('a'));
+        assert.strictEqual(f.isNumber('abc'), false);
+        assert.strictEqual(f.isNumber(''), false);
 
-        assert.strictEqual(false, f.isNumber(false));
-        assert.strictEqual(false, f.isNumber(true));
+        assert.strictEqual(f.isNumber([1, 2, 3]), false);
+        assert.strictEqual(f.isNumber([]), false);
 
-        assert.strictEqual(false, f.isNumber([]));
-        assert.strictEqual(false, f.isNumber([1]));
+        assert.strictEqual(f.isNumber({ a: 1, b: 2, c: 3 }), false);
+        assert.strictEqual(f.isNumber({}), false);
 
-        assert.strictEqual(false, f.isNumber({}));
-        assert.strictEqual(false, f.isNumber({ a: 1 }));
+        assert.strictEqual(f.isNumber(() => 1), false);
+        assert.strictEqual(f.isNumber(() => { }), false);
 
-        assert.strictEqual(false, f.isNumber(() => { }));
+        assert.strictEqual(f.isNumber(new Date()), false);
+        assert.strictEqual(f.isNumber(new RegExp('.*')), false);
+        assert.strictEqual(f.isNumber(new Error('test')), false);
+
+        assert.strictEqual(f.isNumber(fixtures.rootObject()), false);
+        assert.strictEqual(f.isNumber(new fixtures.SimpleObject()), false);
+        assert.strictEqual(f.isNumber(new fixtures.SequenceObject()), false);
     }
 
     namespace isBoolean {
-        assert.strictEqual(false, f.isBoolean(null));
-        assert.strictEqual(false, f.isBoolean(undefined));
+        assert.strictEqual(f.isBoolean(null), false);
+        assert.strictEqual(f.isBoolean(undefined), false);
 
-        assert.strictEqual(false, f.isBoolean(0));
-        assert.strictEqual(false, f.isBoolean(1));
+        assert.strictEqual(f.isBoolean(1), false);
+        assert.strictEqual(f.isBoolean(0), false);
+        assert.strictEqual(f.isBoolean(-1), false);
+        assert.strictEqual(f.isBoolean(0.1), false);
 
-        assert.strictEqual(false, f.isBoolean(''));
-        assert.strictEqual(false, f.isBoolean('a'));
+        assert.strictEqual(f.isBoolean(true), true);
+        assert.strictEqual(f.isBoolean(false), true);
 
-        assert.strictEqual(true, f.isBoolean(false));
-        assert.strictEqual(true, f.isBoolean(true));
+        assert.strictEqual(f.isBoolean('abc'), false);
+        assert.strictEqual(f.isBoolean(''), false);
 
-        assert.strictEqual(false, f.isBoolean([]));
-        assert.strictEqual(false, f.isBoolean([1]));
+        assert.strictEqual(f.isBoolean([1, 2, 3]), false);
+        assert.strictEqual(f.isBoolean([]), false);
 
-        assert.strictEqual(false, f.isBoolean({}));
-        assert.strictEqual(false, f.isBoolean({ a: 1 }));
+        assert.strictEqual(f.isBoolean({ a: 1, b: 2, c: 3 }), false);
+        assert.strictEqual(f.isBoolean({}), false);
 
-        assert.strictEqual(false, f.isBoolean(() => { }));
+        assert.strictEqual(f.isBoolean(() => 1), false);
+        assert.strictEqual(f.isBoolean(() => { }), false);
+
+        assert.strictEqual(f.isBoolean(new Date()), false);
+        assert.strictEqual(f.isBoolean(new RegExp('.*')), false);
+        assert.strictEqual(f.isBoolean(new Error('test')), false);
+
+        assert.strictEqual(f.isBoolean(fixtures.rootObject()), false);
+        assert.strictEqual(f.isBoolean(new fixtures.SimpleObject()), false);
+        assert.strictEqual(f.isBoolean(new fixtures.SequenceObject()), false);
     }
 
     namespace isArray {
-        assert.strictEqual(false, f.isArray(null));
-        assert.strictEqual(false, f.isArray(undefined));
+        assert.strictEqual(f.isArray(null), false);
+        assert.strictEqual(f.isArray(undefined), false);
 
-        assert.strictEqual(false, f.isArray(0));
-        assert.strictEqual(false, f.isArray(1));
+        assert.strictEqual(f.isArray(1), false);
+        assert.strictEqual(f.isArray(0), false);
+        assert.strictEqual(f.isArray(-1), false);
+        assert.strictEqual(f.isArray(0.1), false);
 
-        assert.strictEqual(false, f.isArray(''));
-        assert.strictEqual(false, f.isArray('a'));
+        assert.strictEqual(f.isArray(true), false);
+        assert.strictEqual(f.isArray(false), false);
 
-        assert.strictEqual(false, f.isArray(false));
-        assert.strictEqual(false, f.isArray(true));
+        assert.strictEqual(f.isArray('abc'), false);
+        assert.strictEqual(f.isArray(''), false);
 
-        assert.strictEqual(true, f.isArray([]));
-        assert.strictEqual(true, f.isArray([1]));
-        assert.strictEqual(true, f.isArray(new Array(3)));
+        assert.strictEqual(f.isArray([1, 2, 3]), true);
+        assert.strictEqual(f.isArray([]), true);
 
-        assert.strictEqual(false, f.isArray({}));
-        assert.strictEqual(false, f.isArray({ a: 1 }));
+        assert.strictEqual(f.isArray({ a: 1, b: 2, c: 3 }), false);
+        assert.strictEqual(f.isArray({}), false);
 
-        assert.strictEqual(false, f.isArray(() => { }));
-        assert.strictEqual(false, f.isArray(f.isFunction));
-        assert.strictEqual(false, f.isArray(Function.apply));
+        assert.strictEqual(f.isArray(() => 1), false);
+        assert.strictEqual(f.isArray(() => { }), false);
 
-        const Dummy = function(value) {
-            this.a = value;
-        };
+        assert.strictEqual(f.isArray(new Date()), false);
+        assert.strictEqual(f.isArray(new RegExp('.*')), false);
+        assert.strictEqual(f.isArray(new Error('test')), false);
 
-        assert.strictEqual(false, f.isArray(Date));
-        assert.strictEqual(false, f.isArray(new Date()));
-        assert.strictEqual(false, f.isArray(RegExp));
-        assert.strictEqual(false, f.isArray(new RegExp('a')));
-        assert.strictEqual(false, f.isArray(Dummy));
-        assert.strictEqual(false, f.isArray(new Dummy(1)));
+        assert.strictEqual(f.isArray(fixtures.rootObject()), false);
+        assert.strictEqual(f.isArray(new fixtures.SimpleObject()), false);
+        assert.strictEqual(f.isArray(new fixtures.SequenceObject()), false);
     }
 
     namespace isFunction {
-        assert.strictEqual(false, f.isFunction(null));
-        assert.strictEqual(false, f.isFunction(undefined));
+        assert.strictEqual(f.isFunction(null), false);
+        assert.strictEqual(f.isFunction(undefined), false);
 
-        assert.strictEqual(false, f.isFunction(0));
-        assert.strictEqual(false, f.isFunction(1));
+        assert.strictEqual(f.isFunction(1), false);
+        assert.strictEqual(f.isFunction(0), false);
+        assert.strictEqual(f.isFunction(-1), false);
+        assert.strictEqual(f.isFunction(0.1), false);
 
-        assert.strictEqual(false, f.isFunction(''));
-        assert.strictEqual(false, f.isFunction('a'));
+        assert.strictEqual(f.isFunction(true), false);
+        assert.strictEqual(f.isFunction(false), false);
 
-        assert.strictEqual(false, f.isFunction(false));
-        assert.strictEqual(false, f.isFunction(true));
+        assert.strictEqual(f.isFunction('abc'), false);
+        assert.strictEqual(f.isFunction(''), false);
 
-        assert.strictEqual(false, f.isFunction([]));
-        assert.strictEqual(false, f.isFunction([1]));
-        assert.strictEqual(false, f.isFunction(new Array(3)));
+        assert.strictEqual(f.isFunction([1, 2, 3]), false);
+        assert.strictEqual(f.isFunction([]), false);
 
-        assert.strictEqual(false, f.isFunction({}));
-        assert.strictEqual(false, f.isFunction({ a: 1 }));
+        assert.strictEqual(f.isFunction({ a: 1, b: 2, c: 3 }), false);
+        assert.strictEqual(f.isFunction({}), false);
 
-        assert.strictEqual(true, f.isFunction(() => { }));
-        assert.strictEqual(true, f.isFunction(f.isFunction));
-        assert.strictEqual(true, f.isFunction(Function.apply));
+        assert.strictEqual(f.isFunction(() => 1), true);
+        assert.strictEqual(f.isFunction(() => { }), true);
 
-        const Dummy = function(value) {
-            this.a = value;
-        };
+        assert.strictEqual(f.isFunction(new Date()), false);
+        assert.strictEqual(f.isFunction(new RegExp('.*')), false);
+        assert.strictEqual(f.isFunction(new Error('test')), false);
 
-        assert.strictEqual(true, f.isFunction(Date));
-        assert.strictEqual(false, f.isFunction(new Date()));
-        assert.strictEqual(true, f.isFunction(RegExp));
-        assert.strictEqual(false, f.isFunction(new RegExp('a')));
-        assert.strictEqual(true, f.isFunction(Dummy));
-        assert.strictEqual(false, f.isFunction(new Dummy(1)));
+        assert.strictEqual(f.isFunction(fixtures.rootObject()), false);
+        assert.strictEqual(f.isFunction(new fixtures.SimpleObject()), false);
+        assert.strictEqual(f.isFunction(new fixtures.SequenceObject()), false);
     }
 
     namespace isObject {
-        assert.strictEqual(false, f.isObject(null));
-        assert.strictEqual(false, f.isObject(undefined));
+        assert.strictEqual(f.isObject(null), false);
+        assert.strictEqual(f.isObject(undefined), false);
 
-        assert.strictEqual(false, f.isObject(0));
-        assert.strictEqual(false, f.isObject(1));
+        assert.strictEqual(f.isObject(1), false);
+        assert.strictEqual(f.isObject(0), false);
+        assert.strictEqual(f.isObject(-1), false);
+        assert.strictEqual(f.isObject(0.1), false);
 
-        assert.strictEqual(false, f.isObject(''));
-        assert.strictEqual(false, f.isObject('a'));
+        assert.strictEqual(f.isObject(true), false);
+        assert.strictEqual(f.isObject(false), false);
 
-        assert.strictEqual(false, f.isObject(false));
-        assert.strictEqual(false, f.isObject(true));
+        assert.strictEqual(f.isObject('abc'), false);
+        assert.strictEqual(f.isObject(''), false);
 
-        assert.strictEqual(false, f.isObject([]));
-        assert.strictEqual(false, f.isObject([1]));
-        assert.strictEqual(false, f.isObject(new Array(3)));
+        assert.strictEqual(f.isObject([1, 2, 3]), false);
+        assert.strictEqual(f.isObject([]), false);
 
-        assert.strictEqual(false, f.isObject(() => { }));
-        assert.strictEqual(false, f.isObject(f.isFunction));
-        assert.strictEqual(false, f.isObject(Function.apply));
+        assert.strictEqual(f.isObject({ a: 1, b: 2, c: 3 }), true);
+        assert.strictEqual(f.isObject({}), true);
 
-        assert.strictEqual(true, f.isObject({}));
-        assert.strictEqual(true, f.isObject({ a: 1 }));
-        assert.strictEqual(true, f.isObject(Object.create({})));
+        assert.strictEqual(f.isObject(() => 1), false);
+        assert.strictEqual(f.isObject(() => { }), false);
 
-        const Dummy = function(value) {
-            this.a = value;
-        };
+        assert.strictEqual(f.isObject(new Date()), false);
+        assert.strictEqual(f.isObject(new RegExp('.*')), false);
+        assert.strictEqual(f.isObject(new Error('test')), false);
 
-        assert.strictEqual(false, f.isObject(Date));
-        assert.strictEqual(false, f.isObject(new Date()));
-        assert.strictEqual(false, f.isObject(RegExp));
-        assert.strictEqual(false, f.isObject(new RegExp('a')));
-        assert.strictEqual(false, f.isObject(Dummy));
-        assert.strictEqual(false, f.isObject(new Dummy(1)));
+        assert.strictEqual(f.isObject(fixtures.rootObject()), false);
+        assert.strictEqual(f.isObject(new fixtures.SimpleObject()), false);
+        assert.strictEqual(f.isObject(new fixtures.SequenceObject()), false);
+    }
+
+    namespace isDate {
+        assert.strictEqual(f.isDate(null), false);
+        assert.strictEqual(f.isDate(undefined), false);
+
+        assert.strictEqual(f.isDate(1), false);
+        assert.strictEqual(f.isDate(0), false);
+        assert.strictEqual(f.isDate(-1), false);
+        assert.strictEqual(f.isDate(0.1), false);
+
+        assert.strictEqual(f.isDate(true), false);
+        assert.strictEqual(f.isDate(false), false);
+
+        assert.strictEqual(f.isDate('abc'), false);
+        assert.strictEqual(f.isDate(''), false);
+
+        assert.strictEqual(f.isDate([1, 2, 3]), false);
+        assert.strictEqual(f.isDate([]), false);
+
+        assert.strictEqual(f.isDate({ a: 1, b: 2, c: 3 }), false);
+        assert.strictEqual(f.isDate({}), false);
+
+        assert.strictEqual(f.isDate(() => 1), false);
+        assert.strictEqual(f.isDate(() => { }), false);
+
+        assert.strictEqual(f.isDate(new Date()), true);
+        assert.strictEqual(f.isDate(new RegExp('.*')), false);
+        assert.strictEqual(f.isDate(new Error('test')), false);
+
+        assert.strictEqual(f.isDate(fixtures.rootObject()), false);
+        assert.strictEqual(f.isDate(new fixtures.SimpleObject()), false);
+        assert.strictEqual(f.isDate(new fixtures.SequenceObject()), false);
+    }
+
+    namespace isRegExp {
+        assert.strictEqual(f.isRegExp(null), false);
+        assert.strictEqual(f.isRegExp(undefined), false);
+
+        assert.strictEqual(f.isRegExp(1), false);
+        assert.strictEqual(f.isRegExp(0), false);
+        assert.strictEqual(f.isRegExp(-1), false);
+        assert.strictEqual(f.isRegExp(0.1), false);
+
+        assert.strictEqual(f.isRegExp(true), false);
+        assert.strictEqual(f.isRegExp(false), false);
+
+        assert.strictEqual(f.isRegExp('abc'), false);
+        assert.strictEqual(f.isRegExp(''), false);
+
+        assert.strictEqual(f.isRegExp([1, 2, 3]), false);
+        assert.strictEqual(f.isRegExp([]), false);
+
+        assert.strictEqual(f.isRegExp({ a: 1, b: 2, c: 3 }), false);
+        assert.strictEqual(f.isRegExp({}), false);
+
+        assert.strictEqual(f.isRegExp(() => 1), false);
+        assert.strictEqual(f.isRegExp(() => { }), false);
+
+        assert.strictEqual(f.isRegExp(new Date()), false);
+        assert.strictEqual(f.isRegExp(new RegExp('.*')), true);
+        assert.strictEqual(f.isRegExp(new Error('test')), false);
+
+        assert.strictEqual(f.isRegExp(fixtures.rootObject()), false);
+        assert.strictEqual(f.isRegExp(new fixtures.SimpleObject()), false);
+        assert.strictEqual(f.isRegExp(new fixtures.SequenceObject()), false);
+    }
+
+    namespace isError {
+        assert.strictEqual(f.isError(null), false);
+        assert.strictEqual(f.isError(undefined), false);
+
+        assert.strictEqual(f.isError(1), false);
+        assert.strictEqual(f.isError(0), false);
+        assert.strictEqual(f.isError(-1), false);
+        assert.strictEqual(f.isError(0.1), false);
+
+        assert.strictEqual(f.isError(true), false);
+        assert.strictEqual(f.isError(false), false);
+
+        assert.strictEqual(f.isError('abc'), false);
+        assert.strictEqual(f.isError(''), false);
+
+        assert.strictEqual(f.isError([1, 2, 3]), false);
+        assert.strictEqual(f.isError([]), false);
+
+        assert.strictEqual(f.isError({ a: 1, b: 2, c: 3 }), false);
+        assert.strictEqual(f.isError({}), false);
+
+        assert.strictEqual(f.isError(() => 1), false);
+        assert.strictEqual(f.isError(() => { }), false);
+
+        assert.strictEqual(f.isError(new Date()), false);
+        assert.strictEqual(f.isError(new RegExp('.*')), false);
+        assert.strictEqual(f.isError(new Error('test')), true);
+        assert.strictEqual(f.isError(new SyntaxError('test')), true);
+
+        assert.strictEqual(f.isError(fixtures.rootObject()), false);
+        assert.strictEqual(f.isError(new fixtures.SimpleObject()), false);
+        assert.strictEqual(f.isError(new fixtures.SequenceObject()), false);
     }
 }
