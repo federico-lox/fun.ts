@@ -7,8 +7,7 @@ namespace fun {
             if (isIndexableSequence<I, T>(data)) {
                 return data.__indexAccessor__(index, otherwise);
             } else if (isNumber(index) && isSequence(data)) {
-                const
-                    seq = sequence(data);
+                const seq = sequence(data);
 
                 for (let c = 0, i = seq.next(); c <= (index as any) && !i.done; c++ , i = seq.next()) {
                     if (c === index as any) return { found: true, value: i.value };
