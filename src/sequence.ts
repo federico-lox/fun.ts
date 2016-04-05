@@ -1,6 +1,6 @@
 /// <reference path="type.ts" />
 
-interface Object extends fun.Sequence<[string, any] | any> { }
+interface Object extends fun.Sequence<[string, any] | any> { } // Makes everything a sequence by default
 interface Number extends fun.Sequence<number> { }
 interface Boolean extends fun.Sequence<boolean> { }
 interface String extends fun.Sequence<string> { }
@@ -21,24 +21,24 @@ namespace fun {
     RegExp.prototype.__sequencer__ = referenceSequencer;
     Error.prototype.__sequencer__ = referenceSequencer;
 
-    // TODO: Remove when switching to ES6 target
     export interface SequenceItem<T> {
+        // TODO: Remove when switching to ES6 target
         done: boolean;
         value?: T;
     }
 
-    // TODO: Remove when switching to ES6 target
     export interface Sequencer<T> {
+        // TODO: Remove when switching to ES6 target
         next(): SequenceItem<T>;
     }
 
-    // TODO: Remove when switching to ES6 target
     export interface Sequence<T> {
+        // TODO: Remove when switching to ES6 target
         __sequencer__(): Sequencer<T>;
     }
 
-    // TODO: Refactor when switching to ES6 target
     export function isSequence(value: any): value is Sequence<any> {
+        // TODO: Refactor when switching to ES6 target
         return value != undefined && value.__sequencer__ != undefined && value.__sequencer__.constructor === Function;
     }
 
@@ -47,21 +47,8 @@ namespace fun {
         else return emptySequencer<T>();
     }
 
-    function isIterable(value: any): boolean {
-        // TypeScript 1.8.x fails compilation silently when using Symbol.iterator for ES3/5 targets.
-        return Symbol != undefined
-            && Symbol['iterator'] != undefined
-            && value[Symbol['iterator']] != undefined
-            && value[Symbol['iterator']].constructor === Function;
-    }
-
-    // TODO: Remove when switching to ES6 target
-    function iterableSequencer<T>(target: any): Sequencer<T> {
-        // TypeScript 1.8.x fails compilation silently when using Symbol.iterator for ES3/5 targets.
-        return target[Symbol['iterator']]();
-    }
-
     function emptySequencer<T>(): Sequencer<T> {
+        // TODO: turn returned iterators into immutable objects, that's the advantage over the native Iterator protocol.
         return {
             next: () => ({ done: true, value: undefined })
         };
