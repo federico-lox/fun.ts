@@ -41,4 +41,12 @@ namespace fun {
             return undefined;
         }
     }
+
+    export function hasArity(arity: number, func: Function): boolean {
+        return func.length === arity;
+    }
+
+    export function arity(func: Function): number {
+        return func.length;
+    }
 }

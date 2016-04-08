@@ -59,4 +59,18 @@ namespace test.func {
         assert.strictEqual(undefined, f.parameter(0).call(null));
         assert.strictEqual(undefined, f.parameter('a').call(null));
     }
+
+    namespace hasArity {
+        assert.strictEqual(f.hasArity(0, () => void (0)), true);
+        assert.notStrictEqual(f.hasArity(1, () => void (0)), true);
+        assert.strictEqual(f.hasArity(1, x => void (0)), true);
+        assert.notStrictEqual(f.hasArity(0, x => void (0)), true);
+    }
+
+    namespace arity {
+        assert.strictEqual(f.arity(() => void (0)), 0);
+        assert.notStrictEqual(f.arity(() => void (0)), 1);
+        assert.strictEqual(f.arity(x => void (0)), 1);
+        assert.notStrictEqual(f.arity(x => void (0)), 0);
+    }
 }
