@@ -1,7 +1,7 @@
 /// <reference path="test.ts" />
-/// <reference path="../src/func.ts" />
+/// <reference path="../src/function.ts" />
 
-namespace test.func {
+namespace test.function_ {
     import f = fun;
 
     namespace noop {
