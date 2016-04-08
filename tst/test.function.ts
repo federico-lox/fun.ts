@@ -4,10 +4,33 @@
 namespace test.function_ {
     import f = fun;
 
-    namespace noop {
-        assert.strictEqual(undefined, f.noop());
-        assert.strictEqual(undefined, f.noop(1));
-        assert.strictEqual(undefined, f.noop(1, 2, 3));
+    namespace arity {
+        assert.strictEqual(f.arity(() => void (0)), 0);
+        assert.notStrictEqual(f.arity(() => void (0)), 1);
+        assert.strictEqual(f.arity(x => void (0)), 1);
+        assert.notStrictEqual(f.arity(x => void (0)), 0);
+    }
+
+    namespace constant {
+        const
+            retUndef = f.constant(undefined),
+            retNull = f.constant(null),
+            ret1 = f.constant(1);
+
+        assert.strictEqual(undefined, retUndef());
+        assert.strictEqual(null, retNull());
+
+        assert.strictEqual(1, ret1());
+        assert.strictEqual(1, ret1(undefined));
+        assert.strictEqual(1, ret1(null));
+        assert.strictEqual(1, ret1(2));
+    }
+
+    namespace hasArity {
+        assert.strictEqual(f.hasArity(0, () => void (0)), true);
+        assert.notStrictEqual(f.hasArity(1, () => void (0)), true);
+        assert.strictEqual(f.hasArity(1, x => void (0)), true);
+        assert.notStrictEqual(f.hasArity(0, x => void (0)), true);
     }
 
     namespace identity {
@@ -26,19 +49,10 @@ namespace test.function_ {
         assert.notDeepStrictEqual({ a: [1, 2] }, f.identity({ a: [1, 3] }));
     }
 
-    namespace constant {
-        const
-            retUndef = f.constant(undefined),
-            retNull = f.constant(null),
-            ret1 = f.constant(1);
-
-        assert.strictEqual(undefined, retUndef());
-        assert.strictEqual(null, retNull());
-
-        assert.strictEqual(1, ret1());
-        assert.strictEqual(1, ret1(undefined));
-        assert.strictEqual(1, ret1(null));
-        assert.strictEqual(1, ret1(2));
+    namespace noop {
+        assert.strictEqual(undefined, f.noop());
+        assert.strictEqual(undefined, f.noop(1));
+        assert.strictEqual(undefined, f.noop(1, 2, 3));
     }
 
     namespace parameter {
@@ -58,19 +72,5 @@ namespace test.function_ {
 
         assert.strictEqual(undefined, f.parameter(0).call(null));
         assert.strictEqual(undefined, f.parameter('a').call(null));
-    }
-
-    namespace hasArity {
-        assert.strictEqual(f.hasArity(0, () => void (0)), true);
-        assert.notStrictEqual(f.hasArity(1, () => void (0)), true);
-        assert.strictEqual(f.hasArity(1, x => void (0)), true);
-        assert.notStrictEqual(f.hasArity(0, x => void (0)), true);
-    }
-
-    namespace arity {
-        assert.strictEqual(f.arity(() => void (0)), 0);
-        assert.notStrictEqual(f.arity(() => void (0)), 1);
-        assert.strictEqual(f.arity(x => void (0)), 1);
-        assert.notStrictEqual(f.arity(x => void (0)), 0);
     }
 }

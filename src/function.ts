@@ -1,8 +1,24 @@
 namespace fun {
     /**
-     * An empty function, returns undefined
+     * Returns the arity of the function passed as a parameter.
      */
-    export function noop(...params: any[]): void {}
+    export function arity(func: Function): number {
+        return func.length;
+    }
+
+    /**
+     * Returns a function which return value is constant
+     */
+    export function constant<T>(value: T): (...params: any[]) => T {
+        return (...params: any[]) => value;
+    }
+
+    /**
+     * Predicate checking if a function is of the specified arity.
+     */
+    export function hasArity(arity: number, func: Function): boolean {
+        return func.length === arity;
+    }
 
     /**
      * Returns the value passed in as is.
@@ -12,11 +28,9 @@ namespace fun {
     }
 
     /**
-     * Returns a function which return value is constant
+     * An empty function, returns undefined
      */
-    export function constant<T>(value: T): (...params: any[]) => T {
-        return (...params: any[]) => value;
-    }
+    export function noop(...params: any[]): void { }
 
     /**
      * Returns a function which return value is the parameter at the specified position or with the specified property name.
@@ -40,13 +54,5 @@ namespace fun {
         } else {
             return undefined;
         }
-    }
-
-    export function hasArity(arity: number, func: Function): boolean {
-        return func.length === arity;
-    }
-
-    export function arity(func: Function): number {
-        return func.length;
     }
 }
