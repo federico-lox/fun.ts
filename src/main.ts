@@ -1,11 +1,11 @@
 /// <reference path="type.ts" />
 /// <reference path="function.ts" />
+/// <reference path="collection.ts" />
 /// <reference path="sequence.ts" />
-/// <reference path="data.ts" />
 
 declare var module;
 declare var require;
 
-if (module && module.exports && typeof require === 'function') {
+if (typeof module !== 'undefined' && module.exports != undefined && typeof require !== 'undefined' && require.constructor === Function) {
     module.exports = fun;
 }
