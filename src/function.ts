@@ -1,3 +1,5 @@
+/// <reference path="type.ts" />
+
 namespace fun {
     /**
      * Returns the arity of the function passed as a parameter.
@@ -46,7 +48,7 @@ namespace fun {
      */
     export function parameter<T>(property: string): (param: Object, ...rest: any[]) => T
     export function parameter<T>(position: number): (...params: any[]) => T
-    export function parameter<T>(p: string | number): ((param: Object, ...rest: any[]) => T | void) | ((...params: any[]) => T | void) {
+    export function parameter<T>(p: string | number): ((param: Object, ...rest: any[]) => voidable<T>) | ((...params: any[]) => voidable<T>) {
         if (typeof p === 'number') {
             return (...params: any[]) => params[p];
         } else if (typeof p === 'string') {

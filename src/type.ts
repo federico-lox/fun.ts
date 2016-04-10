@@ -1,4 +1,6 @@
 namespace fun {
+    export type voidable<T> = T | void;
+
     /**
      * Returns true if the value passed in is either null or undefined.
      */
