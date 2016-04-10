@@ -51,4 +51,13 @@ namespace test.fixtures {
     export function rootObject(): Object {
         return Object.create(null, { a: { value: 1 } });
     }
+
+    export class Countable implements f.Countable{
+        length = Number.POSITIVE_INFINITY;
+    }
+
+    export class Collection extends Countable implements f.IndexAccessible<number, number>, f.IndexMutable<number, number> {
+        getAt(index: number): number { return 1000; }
+        putAt(index: number, value: number): Collection { return this; }
+    }
 }

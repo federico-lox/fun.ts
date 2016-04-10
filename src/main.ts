@@ -1,6 +1,8 @@
 /// <reference path="type.ts" />
 /// <reference path="function.ts" />
 /// <reference path="collection.ts" />
+/// <reference path="dictionary.ts" />
+/// <reference path="list.ts" />
 /// <reference path="sequence.ts" />
 
 declare var module;
